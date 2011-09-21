@@ -20,9 +20,7 @@ class NotificationController extends AppController
      */
     public $Sms;
     
-    var $components = array('Email' /*, 'Sms' */);
+    public $components = array('Email', 'IdacFlour.Sms');
     
-    var $helpers = array('NumberWang', 'Time');
+    public $helpers = array('IdacFlour.NumberWang', 'Time');
 }
-
-
