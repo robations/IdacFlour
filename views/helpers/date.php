@@ -71,11 +71,11 @@ class DateHelper extends TimeHelper
                 {
                     if ($fract >= 0.94)
                     {
-                        return (__('almost', true) . " " . ($whole + 1) . " " 
-                            . __n(rtrim($period, "s"), $period, $whole + 1, true)); 
+                        return (__('almost') . " " . ($whole + 1) . " " 
+                            . __n(rtrim($period, "s"), $period, $whole + 1)); 
                     }
-                    return (__("over ", true) . $whole . " " 
-                        . __n(rtrim($period, "s"), $period, $whole, true));
+                    return (__("over ") . $whole . " " 
+                        . __n(rtrim($period, "s"), $period, $whole));
                 }
             } 
         } 
@@ -98,17 +98,17 @@ class DateHelper extends TimeHelper
         
         if ($this->isToday($date))
         {
-            return __('Today', true);
+            return __('Today');
         }
         if ($this->wasYesterday($date))
         {
-            return __('Yesterday', true);
+            return __('Yesterday');
         }
         if ($this->isThisYear($date))
         {
-            return date(__('D j M', true), $date);
+            return date(__('D j M'), $date);
         }
-        return date(__('d/m/Y', true), $date);
+        return date(__('d/m/Y'), $date);
     }
     
     /**
