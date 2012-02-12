@@ -42,7 +42,7 @@ require_once('Net/SMS.php');
 * @see http://www.sms2email.com/site/developerinfo2.php
 * @see http://pear.php.net/package/Net_SMS/docs/latest/Net_SMS/Net_SMS_sms2email_http.html
 */ 
-class SmsComponent extends Object
+class SmsComponent extends Component
 {
     private $sms;
     

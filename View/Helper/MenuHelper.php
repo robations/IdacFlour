@@ -50,7 +50,7 @@ class MenuHelper extends AppHelper
         foreach ($menu as  $m)
         {
             $class = $first ? 'first-child' : '';
-            $class .= $m->isMatch($this->here) ? ' active' : '';
+            $class .= $m->isMatch($this->request->here) ? ' active' : '';
             $class .= isset($m->attribs['selected'])
                     && $m->attribs['selected'] ? ' selected' : '';
 
