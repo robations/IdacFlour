@@ -166,7 +166,7 @@ class StaticGoogleMapsHelper extends AppHelper
             $qs .= sprintf('%s%s=%s', $amp, urlencode($key), urlencode($value));
             $amp = '&';
         }
-        return $this->Html->image("//maps.google.com/maps/api/staticmap?" . $m . $qs,
+        return $this->Html->image(h("//maps.google.com/maps/api/staticmap?" . $m . $qs),
                 $options + array('alt' => 'Google Map'));
     }
 
