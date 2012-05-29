@@ -1,10 +1,5 @@
 <?php
 
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /**
  * Description of SitemapsController
  *
@@ -12,9 +7,14 @@
  */
 class SitemapsController extends IdacFlourAppController
 {
+    public $helpers = array('Cache');
+
+    public $cacheAction = array(
+        'index' => 10800,
+    );
+
     public function index()
     {
-        Configure::load('IdacFlour.sitemap');
         Configure::load('sitemap');
         $controllers = Configure::read('IdacFlour.sitemap.controllers');
         $staticPages = Configure::read('IdacFlour.sitemap.pages');
