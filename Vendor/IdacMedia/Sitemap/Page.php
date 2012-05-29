@@ -45,19 +45,19 @@ class Page
         $mt = $modified->format('U');;
 
         $diff = ($now - $mt) / (24 * 3600);
-        if ($diff > 90)
+        if ($diff > 180)
         {
             $changeFreq = 'yearly';
         }
-        else if ($diff > 14)
+        else if ($diff > 28)
         {
             $changeFreq = 'monthly';
         }
-        else if ($diff > 3)
+        else if ($diff > 6)
         {
             $changeFreq = 'weekly';
         }
-        else if ($diff > 1)
+        else if ($diff > 2)
         {
             $changeFreq = 'daily';
         }
