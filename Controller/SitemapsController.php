@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Description of SitemapsController
+ * Generates an xml sitemap based on app config
  *
  * @author Rob-C
  */
