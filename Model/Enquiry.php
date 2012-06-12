@@ -4,12 +4,14 @@ class Enquiry extends AppModel
 {
 
     public $useTable = false;
-    public $_schema = array(
+
+    protected $_schema = array(
         'name' => array('type' => 'string', 'length' => 100),
         'email' => array('type' => 'string', 'length' => 255),
         'phone' => array('type' => 'string', 'length' => 20),
         'message' => array('type' => 'text'),
     );
+
     public $validate = array(
         'name' => array(
             'rule' => array('minLength', 1),
