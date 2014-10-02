@@ -138,35 +138,32 @@ class StaticGoogleMapsHelper extends AppHelper
      */
     public function toHtml($options = array())
     {
-        $qs = '';
-        $amp = '';
-        $m = array();
-        $pipe = '';
-        foreach ($this->markers as $styles => $positions)
-        {
-            $x = "markers=$styles|";
-            $pipe = '';
-            foreach ($positions as $position)
-            {
-                $x .= $pipe . urlencode($position);
-                $pipe = '|';
-            }
-            $m[] = $x;
+        $markers = implode(
+            '|',
+            array_reduce(
+                array_map(
+                    function ($style, $positions) {
+                        return array_merge(
+                            [$style],
+                            $positions
+                        );
+                    },
+                    array_keys($this->markers),
+                    array_values($this->markers)
+                ),
+                function ($agg, $x) {
+                    return array_merge($agg, $x);
+                },
+                []
+            )
+        );
+
+        if (!empty($markers)) {
+            $this->options['markers'] = $markers;
         }
-        if (count($m))
-        {
-            $m = implode('&', $m) . '&';
-        }
-        foreach ($this->options as $key => $value)
-        {
-            if ($value === null)
-            {
-                continue;
-            }
-            $qs .= sprintf('%s%s=%s', $amp, urlencode($key), urlencode($value));
-            $amp = '&';
-        }
-        return $this->Html->image("//maps.google.com/maps/api/staticmap?" . $m . $qs,
+        $qs = http_build_query($this->options, null, '&', PHP_QUERY_RFC3986);
+
+        return $this->Html->image("//maps.google.com/maps/api/staticmap?" . $qs,
                 $options + array('alt' => 'Google Map'));
     }
 
